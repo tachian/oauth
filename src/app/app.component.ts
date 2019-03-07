@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private tokenService: AngularTokenService) { }
+
   title = 'oauth';
+
+  login() {
+    this.tokenService.signInOAuth('google_oauth2')
+  }
 }
