@@ -1,4 +1,10 @@
-<div class="btn" (click)="login()">Login</div>
+<div *ngIf="tokenService.userSignedIn()">
+  <div class="btn" (click)="logout()">Logout</div>
+</div>
+<div *ngIf="!tokenService.userSignedIn()">
+  <div class="btn" (click)="login()">Login</div>
+</div>
+
 <div class="div-router-outlet">
   <router-outlet></router-outlet>             
 </div>

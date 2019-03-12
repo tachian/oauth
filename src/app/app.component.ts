@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 
 @Component({
@@ -6,13 +6,22 @@ import { AngularTokenService } from 'angular-token';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   constructor(private tokenService: AngularTokenService) { }
 
   title = 'oauth';
 
+  ngOnInit() {
+  }
+
   login() {
-    this.tokenService.signInOAuth('google_oauth2')
+    this.tokenService.signInOAuth('google_oauth2');
+  }
+
+  logout() {
+    this.tokenService.signOut().subscribe(
+      (x) => console.log('Successful logout')
+    );
   }
 }
